@@ -34,7 +34,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 internal fun CoinListScreen(
     state: CoinListState,
-//    onAction: (CoinListAction) -> Unit,
+    onAction: (CoinListAction) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     if (state.isLoading) {
@@ -53,7 +53,7 @@ internal fun CoinListScreen(
                 CoinListItem(
                     coinUi = coinUi,
                     onClick = {
-
+                        onAction(CoinListAction.OnCoinClick(coinUi))
                     },
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -73,7 +73,7 @@ private fun CoinListScreenPreview() {
                     previewCoin.copy(id = it.toString())
                 }
             ),
-//            onAction = {},
+            onAction = {},
             modifier = Modifier.background(MaterialTheme.colorScheme.background)
         )
     }
